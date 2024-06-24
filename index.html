@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Songbook</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #FFC470; /* Light orange background */
+            color: #333; /* Dark text color */
+        }
+        h1, h2 ,h3 {
+            text-align: center;
+            color: #8B322C; /* Dark red for headings */
+        }
+        .language-selector {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .language-selector label {
+            font-weight: bold;
+            color: #8B322C; /* Dark red for labels */
+        }
+        .language-selector select {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #DD5746; /* Reddish background */
+            color: #333; /* Dark text color */
+        }
+        .song-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .song-item {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #4793AF; /* Light blue background */
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            transition: background-color 0.3s ease;
+            position: relative; /* Ensure positioning context for absolute icon */
+        }
+        .song-item:hover {
+            background-color: #8B322C; /* Dark red on hover */
+            color: #FFC470; /* Light orange text on hover */
+        }
+        .lyrics-container {
+            display: none;
+            padding: 10px;
+            background-color: #DD5746; /* Reddish background for lyrics */
+            border: 1px solid #ccc;
+            margin-top: 5px;
+            color: #333; /* Dark text color */
+        }
+        .song-item.active .lyrics-container {
+            display: block;
+        }
+ /* Footer Styles */
+    footer {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #8B322C; /* Dark red background */
+        color: #FFC470; /* Light orange text color */
+        font-size: 14px;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 50px; /* Adjust height as needed */
+        line-height: 50px; /* Center content vertically */
+    }
+    </style>
+</head>
+<body>
+    <h1>आत्मिक गीतसंग्रह</h1>
+    <h3>(Marathi, Hindi & English)</h3>
+    <h3>Songs</h3>
+
+    <!-- Language Selector Dropdown -->
+    <div class="language-selector">
+        <label for="language">Select Language:</label>
+        <select id="language">
+            <option value="english">English</option>
+            <option value="hindi">Hindi</option>
+            <option value="marathi">Marathi</option>
+        </select>
+    </div>
+<!-- Search Input -->
+<div class="search-container">
+    <label for="search">Search Songs:</label>
+    <input type="text" id="search" placeholder="Enter song title...">
+</div>
+
+<script>
+    // Function to filter songs based on search input
+    function filterSongs(searchText) {
+        var songs = document.querySelectorAll('.song-item');
+        songs.forEach(song => {
+            var title = song.textContent.toLowerCase(); // Get song title text
+            if (title.includes(searchText.toLowerCase())) {
+                song.style.display = 'block'; // Show song if title matches search
+            } else {
+                song.style.display = 'none'; // Hide song if title does not match search
+            }
+        });
+    }
+
+    // Event listener for search input
+    var searchInput = document.getElementById('search');
+    searchInput.addEventListener('input', function() {
+        var searchText = this.value.trim();
+        filterSongs(searchText);
+    });
+</script>
+
+    <!-- Index Page -->
+    <h2>Index</h2>
+    <ul class="song-list" id="song-index">
+        <!-- English Songs -->
+        <li class="song-item english" data-song="song1">
+            192. Abide with me
+            <div class="lyrics-container"><p>
+                Abide with me; fast falls the eventide;<br>
+The darkness deepens; Lord, with me abide;<br>
+When other helpers fail and comforts flee,<br>
+Help of the helpless, oh, abide with me.<br><br>
+
+Swift to its close ebbs out life’s little day;<br>
+Earth’s joys grow dim, its glories pass away;<br>
+Change and decay in all around I see—<br>
+O Thou who changest not, abide with me.<br><br>
+
+I need Thy presence every passing hour;<br>
+What but Thy grace can foil the tempter’s pow’r?<br>
+Who, like Thyself, my guide and stay can be?<br>
+Through cloud and sunshine, Lord, abide with me.<br><br>
+
+I fear no foe, with Thee at hand to bless;<br>
+Ills have no weight, and tears no bitterness;<br>
+Where is death’s sting? Where, grave, thy victory?<br>
+I triumph still, if Thou abide with me.<br><br>
+
+Hold Thou Thy cross before my closing eyes;<br>
+Shine through the gloom and point me to the skies;<br>
+Heav’n’s morning breaks, and earth’s vain shadows flee;<br>
+In life, in death, O Lord, abide with me.<br><br>
+            </p></div>
+        </li>
+        <li class="song-item english" data-song="song2">
+            193. All to Jesus I Surrender
+            <div class="lyrics-container"><p>
+                All to Jesus I surrender,
+All to Him I freely give;
+I will ever love and trust Him,
+In His presence daily live.
+
+                [Chorus]
+ I surrender all,
+      I surrender all.
+    All to Thee, my blessed Savior,
+        I surrender all.
+
+All to Jesus I surrender,
+Humbly at His feet I bow,
+Worldly pleasures all forsaken;
+Take me, Jesus, take me now.
+
+All to Jesus I surrender,
+Make me, Savior, wholly Thine;
+Let me feel Thy Holy Spirit,
+Truly know that Thou art mine.
+
+All to Jesus I surrender,
+Lord, I give myself to Thee;
+Fill me with Thy love and power,
+Let Thy blessing fall on me.
+            </p></div>
+        </li>
+        <li class="song-item english" data-song="song3">
+            194. Holy, holy, holy
+            <div class="lyrics-container">
+                <p>Holy, holy, holy! Lord God Almighty!
+Early in the morning our song shall rise to Thee;
+Holy, holy, holy, merciful and mighty!
+God in three Persons, blessed Trinity! <br><br>
+Holy, holy, holy! All the saints adore Thee,
+Casting down their golden crowns around the glassy sea;
+Cherubim and seraphim falling down before Thee,
+Who was, and is, and evermore shall be.<br><br>
+Holy, holy, holy! Though the darkness hide Thee,
+Though the eye of sinful man Thy glory may not see;
+Only Thou art holy; there is none beside Thee,
+Perfect in pow’r, in love, and purity.<br><br>
+Holy, holy, holy! Lord God Almighty!
+All Thy works shall praise Thy Name, in earth, and sky, and sea;
+Holy, holy, holy; merciful and mighty!
+God in three Persons, blessed Trinity!<br><br></p>
+            </div>
+        </li>
+<li class="song-item english" data-song="song4">
+            195. I Need Thee Every Hour
+            <div class="lyrics-container">
+                <p>I need Thee every hour, most gracious Lord;<br>
+No tender voice like Thine can peace afford.<br><br>
+[Chorus]<br><br>
+I need Thee, oh, I need Thee;<br>
+Every hour I need Thee;<br>
+Oh, bless me now, my Savior,<br><br>
+I come to Thee.<br>
+I need Thee every hour, stay Thou nearby;<br>
+Temptations lose their pow’r when Thou art nigh.<br><br>
+I need Thee every hour, in joy or pain;<br>
+Come quickly and abide, or life is vain.<br><br>
+I need Thee every hour; teach me Thy will;<br>
+And Thy rich promises in me fulfill.<br><br>
+I need Thee every hour, most Holy One;<br>
+Oh, make me Thine indeed, Thou blessed Son.<br><br></p>
+            </div>
+        </li>
+
+        <!-- Hindi Songs -->
+        <li class="song-item hindi" data-song="song1">
+            Song Title 1 (Hindi)
+            <div class="lyrics-container">
+                [Verse 1]
+                Hindi verse here for the first song
+                [Chorus]
+                Hindi chorus for the first song
+            </div>
+        </li>
+        <li class="song-item hindi" data-song="song2">
+            Song Title 2 (Hindi)
+            <div class="lyrics-container">
+                [Verse 1]
+                Hindi verse here for the second song
+                [Chorus]
+                Hindi chorus for the second song
+            </div>
+        </li>
+        <li class="song-item hindi" data-song="song3">
+            Song Title 3 (Hindi)
+            <div class="lyrics-container">
+                [Verse 1]
+                Hindi verse here for the third song
+                [Chorus]
+                Hindi chorus for the third song
+            </div>
+        </li>
+
+        <!-- Marathi Songs -->
+        <li class="song-item marathi" data-song="song1">
+            1. अर्पितों, प्रभुला सर्वच कांहीं...
+            <div class="lyrics-container"><p>
+अर्पितों प्रभुला सर्वच कांहीं ।<br>
+
+त्वरेनें माझ्या मनीं तूं राहीं. ॥धृ.॥<br><br>
+
+संसार माझा समजुनि गमतों, ।<br>
+
+निशिदिनिं खटपट त्याची मी करितों, ।<br>
+
+तुझा मी आतां जाणुनि नमितों, ।<br>
+
+ख्रिस्ता, दयेनें दीनांस पाही.<br><br>
+
+बुद्धि जी, दिली तूं, माझीच वाटे, ।<br>
+
+गर्वानें फुगुनी हृदय फाटे; | <br>
+
+शोकानें आतां कंठ हा दाटे, । <br>
+
+प्रभू, मी पापी ! किती तू साहीं !  <br><br>
+
+कीती मी हट्टी ! ऐकें न वाणी, ।<br>
+
+माझीच इच्छा नेहमिं वाणी; ।<br>
+
+सर्वचि अर्पी आतां हा प्राणी, ।<br>
+
+तुज वांचुनीयां कुणीच नाही <br><br>
+तनु ही झिजवीं तुझ्याचि पायीं,<br>
+
+मन हें लावी तुझ्याचि ठायीं; ।<br>
+
+धन हें खर्ची तुझ्याचि कार्यो ।<br>
+
+सर्वस्व माझें वाही. तुलाच वाही | <br>
+
+
+            </p></div>
+        </li>
+        <li class="song-item marathi" data-song="song2">
+            Song Title 2 (Marathi)
+            <div class="lyrics-container">
+                [Verse 1]
+                Marathi verse here for the second song
+                [Chorus]
+                Marathi chorus for the second song
+            </div>
+        </li>
+        <li class="song-item marathi" data-song="song3">
+            Song Title 3 (Marathi)
+            <div class="lyrics-container">
+                [Verse 1]
+                Marathi verse here for the third song
+                [Chorus]
+                Marathi chorus for the third song
+            </div>
+        </li>
+    </ul>
+<!-- Footer -->
+<footer>
+    <p>ख्रिस्ताच्या सर्व<br>&copy; 2024 My Songbook. All rights reserved.</p>
+</footer>
+
+
+    <!-- Script for Song Selection and Language Filtering -->
+    <script>
+        // Function to show lyrics for selected song
+        function showLyrics(songId, language) {
+            // Hide all lyrics containers first
+            var lyricsContainers = document.querySelectorAll('.lyrics-container');
+            lyricsContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+
+            // Show lyrics container for the selected song
+            var lyricsContainer = document.querySelector(`.song-item.${language}[data-song="${songId}"] .lyrics-container`);
+            lyricsContainer.style.display = 'block';
+        }
+
+        // Event listeners for song item clicks
+        document.querySelectorAll('.song-item').forEach(item => {
+            item.addEventListener('click', function() {
+                var songId = this.getAttribute('data-song');
+                var language = this.classList[1]; // Assumes second class is language (e.g., english, hindi, marathi)
+                
+                // Remove 'active' class from all song items
+                document.querySelectorAll('.song-item').forEach(song => {
+                    song.classList.remove('active');
+                });
+
+                // Add 'active' class to the clicked song item
+                this.classList.add('active');
+
+                showLyrics(songId, language);
+            });
+        });
+
+        // Function to show songs based on selected language
+        function showSongs(language) {
+            var songs = document.querySelectorAll('.song-item');
+            songs.forEach(song => {
+                var lyricsContainer = song.querySelector('.lyrics-container');
+                if (song.classList.contains(language)) {
+                    song.style.display = 'block';
+                    lyricsContainer.style.display = 'none'; // Hide lyrics container initially
+                } else {
+                    song.style.display = 'none';
+                }
+            });
+        }
+
+        // Initial call to show songs based on default selected language
+        var languageSelect = document.getElementById('language');
+        showSongs(languageSelect.value);
+
+        // Event listener for language selection dropdown
+        languageSelect.addEventListener('change', function() {
+            var selectedLanguage = this.value;
+            showSongs(selectedLanguage);
+
+            // Hide all lyrics containers when changing language
+            var lyricsContainers = document.querySelectorAll('.lyrics-container');
+            lyricsContainers.forEach(container => {
+                container.style.display = 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>
