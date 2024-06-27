@@ -509,6 +509,13 @@ There are heights of joy that I yet may reach<br>
             var lyricsContainers = document.querySelectorAll('.lyrics-container');
             lyricsContainers.forEach(container => {
                 container.style.display = 'none';
+
+		    // Restriction on Right click
+		    $('img').mousedown(function (e) {
+  if(e.button == 2) { // right click
+    return false; // do nothing!
+  }
+		    
             });
         });
     </script>
